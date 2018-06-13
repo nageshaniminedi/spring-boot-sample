@@ -15,7 +15,11 @@ apply plugin: 'eclipse'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 
-version = '2.17.1-SNAPSHOT'
+if (project.hasProperty('projVersion')) {
+  project.version = project.projVersion
+} else {
+  project.version = '10.0.0'
+}
 
 processResources.destinationDir = compileJava.destinationDir
 compileJava.dependsOn processResources
